@@ -1,0 +1,24 @@
+{
+  "name": "potato",
+  "version": "1.0.0",
+  "description": "Projeto da equipe Potato desenvolvido durante a Hackatona AGES 2018. O projeto visa a construção de um chatbot que determine para o usuário o melhor crédito.",
+  "main": "app.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HackatonaES2018/Potato.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HackatonaES2018/Potato/issues"
+  },
+  "homepage": "https://github.com/HackatonaES2018/Potato#readme"
+}
