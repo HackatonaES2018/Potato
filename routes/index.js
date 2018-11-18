@@ -13,6 +13,20 @@
  
 var cpf = 88277222214; // {Number} CPF de uma pessoa que se deseja consultar
 
+router.post('/chat', function(req, res, next) {
+  if(req.body.r == ""){
+    res.status(400).send;
+  }else TEF.respostas({
+    'pergunta' : req.body.pergunta,
+    'resposta' :req.body.resposta
+});
+console.log(req.body.pergunta, req.body.resposta);
+    setTimeout(()=>  res.send(TEF.perguntas(req.body.pergunta, req.body.resposta)),100);
+});
+
+router.get('/resp', function(req, res, next) {
+    res.send(TEF.getResp());
+});
   
   router.post('/propostas', function(req, res, next) {
 
@@ -24,7 +38,7 @@ var cpf = 88277222214; // {Number} CPF de uma pessoa que se deseja consultar
         console.log(data)
         prop();
       }
-    };
+    };  
 
       let callback2 = function(error, data, response) {
         if (error) {
