@@ -16,17 +16,30 @@ var cpf = 88277222214; // {Number} CPF de uma pessoa que se deseja consultar
   
   router.post('/propostas', function(req, res, next) {
 
-    let callback = function(error, data, response) {
+    let callback1 = function(error, data, response) {
       if (error) {
         console.error(error);
       } else {
         ultimaProp = data.proposta;
-        console.log(data);
-        res.send(data);
+        console.log(data)
+        prop();
       }
     };
 
-  apiProp.propostasPost(clientId, req.body, callback);
+      let callback2 = function(error, data, response) {
+        if (error) {
+          console.error(error);
+        } else {
+          console.log(data)
+          res.send(data);
+        }
+    };
+
+    function prop(){
+    apiProp.propostasPropostaStatusGet(clientId, ultimaProp, callback2);
+    }
+    apiProp.propostasPost(clientId, req.body, callback1);
+
   });
 
     router.get('/cpf', function(req, res, next) {
