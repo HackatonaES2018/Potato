@@ -2,25 +2,36 @@
   var router = express.Router();
   var TEF = require('../controller/TEF');
   var ApiCrditoPessoalDemo = require('api-credito-pessoal-demo'); 
-  var api = new ApiCrditoPessoalDemo.ClientesApi()
+  var apiCli = new ApiCrditoPessoalDemo.ClientesApi();
+  var apiProp = new ApiCrditoPessoalDemo.PropostasApi();
+
   var clientId = '8bdb6a57-1c82-3b8c-9997-b47565298541';
   
-  var resposta = null;
+  var ultimaProp = null;
 
   var sinc = 0;
  
 var cpf = 88277222214; // {Number} CPF de uma pessoa que se deseja consultar
 
   
-  router.post('/alteracartao', function(req, res, next) {
-    numeroCartao = req.body.cartao;
-    console.log(req.body.cartao);
-    res.status(204).send();
+  router.post('/propostas', function(req, res, next) {
+
+    let callback = function(error, data, response) {
+      if (error) {
+        console.error(error);
+      } else {
+        ultimaProp = data.proposta;
+        console.log(data);
+        res.send(data);
+      }
+    };
+
+  apiProp.propostasPost(clientId, req.body, callback);
   });
 
     router.get('/cpf', function(req, res, next) {
 
-      var callback = function(error, data, response) {
+      let callback = function(error, data, response) {
         if (error) {
           console.error(error);
         } else {
@@ -28,7 +39,7 @@ var cpf = 88277222214; // {Number} CPF de uma pessoa que se deseja consultar
         }
       };
 
-    api.clientesCpfContratosGet(clientId, req.query.cpf, callback);
+    apiCli.clientesCpfContratosGet(clientId, req.query.cpf, callback);
   });
 
 
