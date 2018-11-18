@@ -14,9 +14,7 @@
 var cpf = 88277222214; // {Number} CPF de uma pessoa que se deseja consultar
 
 router.post('/chat', function(req, res, next) {
-  if(req.body.r == ""){
-    res.status(400).send;
-  }else TEF.respostas({
+  TEF.respostas({
     'pergunta' : req.body.pergunta,
     'resposta' :req.body.resposta
 });

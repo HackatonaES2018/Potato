@@ -31,6 +31,10 @@ TEF = {
             "respostas":'Prespo'
         }
         switch(perg){
+            case "PotatoFirstGroup":
+                response.perguntas = "Qual a sua idade?";
+                response.respostas = ["de 18 a 30", "de 30 a 40.", "de 40 a 50.", "de 50 a 60."];
+            break;
             case "Qual a sua idade?":
             console.log("entoruuuu")
                 if(resp === "de 18 a 30"){
