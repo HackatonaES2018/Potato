@@ -14,12 +14,34 @@
 var cpf = 88277222214; // {Number} CPF de uma pessoa que se deseja consultar
 
 router.post('/chat', function(req, res, next) {
+  res.set("Access-Control-Allow-Origin", "http://localhost:8008");
+  let aaa = TEF.perguntas(req.body.question, req.body.answer);
   TEF.respostas({
-    'pergunta' : req.body.pergunta,
-    'resposta' :req.body.resposta
+    'question' : req.body.question,
+    'answer' :req.body.answer
 });
-console.log(req.body.pergunta, req.body.resposta);
-    setTimeout(()=>  res.send(TEF.perguntas(req.body.pergunta, req.body.resposta)),100);
+  console.log('REQUEST::::' + JSON.stringify(req.body));
+  console.log('antes reti'+ JSON.stringify(aaa));
+    setTimeout(()=>  res.send(aaa),100);
+});
+
+router.post('/chat/inicia', function(req, res, next) {
+  if(sinc > 0){res.status(204).send}
+  else{
+    res.set("Access-Control-Allow-Origin", "http://localhost:8008");
+    TEF.respostas({
+      'question' : req.body.question,
+      'answer' :req.body.answer
+  });
+    let response =
+    {
+        "question":"Qual a sua idade?",
+        "answer":["de 18 a 30", "de 30 a 40.", "de 40 a 50.", "de 50 a 60."]
+    }
+    console.log('REQUEST::::' + JSON.stringify(req.body));
+    console.log()
+      setTimeout(()=>  res.send(response),100);
+  }
 });
 
 router.get('/resp', function(req, res, next) {
@@ -27,6 +49,7 @@ router.get('/resp', function(req, res, next) {
 });
   
   router.post('/propostas', function(req, res, next) {
+    res.set("Access-Control-Allow-Origin", "http://localhost:8008");
 
     let callback1 = function(error, data, response) {
       if (error) {
@@ -42,8 +65,8 @@ router.get('/resp', function(req, res, next) {
         if (error) {
           console.error(error);
         } else {
-          console.log(data)
-          res.send(data);
+          console.log(data);
+          res.send(data.ofertas[0]);
         }
     };
 

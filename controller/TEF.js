@@ -27,89 +27,86 @@ TEF = {
     perguntas: function(perg, resp){
         let response =
         {
-            "perguntas":'Pperg',
-            "respostas":'Prespo'
+            "question":'Pperg',
+            "answer":'Prespo'
         }
         switch(perg){
-            case "PotatoFirstGroup":
-                response.perguntas = "Qual a sua idade?";
-                response.respostas = ["de 18 a 30", "de 30 a 40.", "de 40 a 50.", "de 50 a 60."];
-            break;
             case "Qual a sua idade?":
-            console.log("entoruuuu")
                 if(resp === "de 18 a 30"){
-                    response.perguntas = "Ótimo! Agora escolha o seu perfil:"; 
-                    response.respostas = ["Servidor publico", "Pensionista", "Militar", "Assalariado privado", "Autonomo", "Desempregado"]
+                    response.question = "Ótimo! Agora escolha o seu perfil:"; 
+                    response.answer = ["Servidor publico", "Pensionista", "Militar", "Assalariado privado", "Autonomo", "Desempregado"]
                 }else{
-                    response.perguntas  = "Ótimo! Agora escolha o seu perfil:"; 
-                    response.respostas = ["Aposentado", "Servidor publico", "Pensionista", "Militar", "Assalariado privado", "Autonomo", "Desempregado"];
+                    response.question  = "Ótimo! Agora escolha o seu perfil:"; 
+                    response.answer = ["Aposentado", "Servidor publico", "Pensionista", "Militar", "Assalariado privado", "Autonomo", "Desempregado"];
                 }
             break;
             case "Ótimo! Agora escolha o seu perfil:":
             if(resp === "Aposentado"){
-                response.perguntas = "Voce é casado?"; 
-                response.respostas = ["sim","não"];
-            }else if(resp === "desempregado"){
-                response.perguntas = "Voce possui bens no seu nome?"; 
-                response.respostas = ["casa","carro","participa de clube","não"];
+                response.question = "Voce é casado?"; 
+                response.answer = ["sim","não"];
+            }else if(resp === "Desempregado"){
+                response.question = "Voce possui bens no seu nome?"; 
+                response.answer = ["casa","carro","participa de clube","não"];
             }else{
-                response.perguntas = "Voce mora com os pais?";
-                response.respostas = ["sim","não"];}
+                response.question = "Voce mora com os pais?";
+                response.answer = ["sim","não"];}
             break;
             case "Voce mora com os pais?":
-                response.perguntas = "Voce é casado?";
-                response.respostas = ["sim","não"];
+                response.question = "Voce é casado?";
+                response.answer = ["sim","não"];
             break;
             case "Voce é casado?":
                 if((resp === "não") && (TEF.get("Voce mora com os pais?"))){
-                        response.perguntas = "FIM";
-                        response.respostas = "FIM";  
+                        response.question = "FIM";
+                        response.answer = ["FIM", "FIM"];  
                 }else{
-                    response.perguntas = "Voce possui bens no seu nome?"; 
-                    response.respostas = ["casa","carro","participa de clube","não"];
+                    response.question = "Voce possui bens no seu nome?"; 
+                    response.answer = ["casa","carro","participa de clube","não"];
                 }
             break;
             case "Voce possui bens no seu nome?":
-                response.perguntas = "Voce já teve algum investimento?";
-                response.respostas = "sim", "não"; 
+                response.question = "Voce já teve algum investimento?";
+                response.answer = ["sim", "não"]; 
 
             break;
             case "Voce já teve algum investimento?":
                 if(resp === "sim"){
-                    response.perguntas = "O que aconteceu com ele?";
-                    response.respostas = "Deu certo", "Deu errado";  
+                    response.question = "O que aconteceu com ele?";
+                    response.answer = "Deu certo", "Deu errado";  
                 }else{
-                    response.perguntas = "Voce ja contratou linha de credito anteriormente?";
-                    response.respostas = "sim", "não";
+                    response.question = "Voce ja contratou linha de credito anteriormente?";
+                    response.answer = ["sim", "não"];
                  } 
 
             break;
             case "O que aconteceu com ele?":
-                response.perguntas = "Voce ja contratou linha de credito anteriormente?";
-                response.respostas = "sim", "não";  
+                response.question = "Voce ja contratou linha de credito anteriormente?";
+                response.answer = ["sim", "não"];  
             break;
             case "Voce ja contratou linha de credito anteriormente?":
                 if(resp === "sim"){
-                    response.perguntas = "Qual o motivo?";
-                    response.respostas = "Investimento", "Pagamento de dividas";  
-                }   {
-                response.perguntas = "FIM";
-                response.respostas = "FIM"; }
+                    response.question = "Qual o motivo?";
+                    response.answer = "Investimento", "Pagamento de dividas";  
+                }   
+                else{
+                    response.question = "FIM";
+                    response.answer = ["FIM"];
+                }
 
             break;
             case "Qual o motivo?":
-                response.perguntas = "Consegiu pagar em dia?";
-                response.respostas = "sim", "não"; 
+                response.question = "Consegiu pagar em dia?";
+                response.answer = "sim", "não"; 
             break;
             case "Consegiu pagar em dia?":
-                response.perguntas = "FIM";
-                response.respostas = "FIM"; 
+                response.question = "FIM";
+                response.answer = ["FIM", "FIM"]; 
             break;
             default :
-                response.perguntas = "ALGO ERRADO!!!!";
-                response.respostas = "ALGO ERRADO!!!!"; 
+                response.question = "ALGO ERRADO!!!!";
+                response.answer = ["ALGO ERRADO!!!!", "ALGO ERRADO!!!!"]; 
         }
-        console.log(response);
+        console.log('RESPONDENDO PRO JOJO>::::' +JSON.stringify(response))  ;
         return response;
     },
 
