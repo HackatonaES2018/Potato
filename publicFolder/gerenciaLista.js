@@ -1,16 +1,26 @@
-$('document').ready(startChat)
+$('document').ready(initialize());
 
-var chat = [];
+var chat;
 
-var _count = 0
+var _count;
+
+function initialize() {
+    chat = [];
+    _count = 0;
+
+    $('#send').on('click', createQuestion);
+
+    chat.length == 0 ? startChat() : null;
+};
 
 function startChat(){
     var object = {}
     object.question = "PotatoFirstGroup"
     object.answer = "PotatoFirstGroup"
     
-    $.get("http://localhost:5000/chat", object, function (response) {
-        response = JSON.parse(response);
+    $.post("http://localhost:8080/chat/inicia", object, function (response) {
+        // response = JSON.parse(response);
+        console.log(response)
         var data = {
             count: _count,
             question: response.question,
@@ -32,7 +42,7 @@ function createQuestion(){
     
     for (let index = 0; index < chat.length; index++) {
         const element = chat[index].count;
-        if (element == _count){
+        if (element == chat.length-1){
             chat[index].chosen = answer;
             object.question = chat[index].question;
             object.answer = chat[index].chosen;
@@ -40,17 +50,21 @@ function createQuestion(){
         }        
     }
 
-    $.post("http://localhost:5000/chat", object, function (response) {
+    $.post("http://localhost:8080/chat", object, function (response) {
         var data = {
             count: _count,
             question: response.question,
             answer: response.answer
         }
+        if (){
+            
+        }
         chat.push(data);
         _count+=1;
+        updateScreen();
     });
 
-    updateScreen()
+    
 }
 
 function updateScreen(){
