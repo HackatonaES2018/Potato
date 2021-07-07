@@ -1,0 +1,41 @@
+.container{
+    max-width: 800px;
+    margin: auto
+}
+button{
+    height: 35;
+    background-color: hsl(240, 90%, 74%);
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+}
+input{
+    border-radius: 3px;
+}
+
+li{
+    border:0;padding:10px;background:whitesmoke;
+}
+li{
+    width:75%;display:flex;flex-direction:row;
+}
+li > p:first-of-type{
+    width:100%;margin-top:0;margin-bottom:500px;line-height: 13px;font-size: 12px;
+}
+li > p:last-of-type{
+    width:100%;text-align:right;color:silver;margin-bottom:-7px;margin-top:auto;
+}
+li -l{
+    float:left;padding-right:10px;
+}        
+li -r{
+    float:right;padding-left:10px;
+}
+form{
+    position:absolute;
+    width:80%;
+    margin-left: 10%;
+    display:flex;
+    background-color:#CDFCE8;
+    height: 60%; 
+}
